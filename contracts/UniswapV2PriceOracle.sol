@@ -37,4 +37,8 @@ contract UniswapV2PriceOracle {
         WETH = _WETH;
         UNISWAP_V2_FACTORY_ADDRESS = _UNISWAP_V2_FACTORY_ADDRESS;
     }
+
+    function getPairAddress(address token) public view returns (address) {
+      return IUniswapV2Factory(UNISWAP_V2_FACTORY_ADDRESS).getPair(token, WETH);
+    }
 }
