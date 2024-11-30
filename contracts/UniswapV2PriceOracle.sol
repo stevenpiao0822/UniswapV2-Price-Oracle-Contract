@@ -53,7 +53,6 @@ contract UniswapV2PriceOracle {
         address token
     )
         public
-        view
         returns (uint256 tokenPrice, uint256 ethPrice, string memory symbol)
     {
         address pairAddress = getPairAddress(token, WETH);
@@ -65,5 +64,35 @@ contract UniswapV2PriceOracle {
 
         uint8 tokenDecimals = IERC20(token).decimals();
         symbol = IERC20(token).symbol();
+
+        if (token0 == WETH) {
+            ethPrice = (reserve0 * (10 ** tokenDecimals)) / reserve1;
+            tokenPrice = (reserve1 * (10 ** 18)) / reserve0;
+        } else if (token1 == token) {
+            ethPrice = (reserve1 * (10 ** tokenDecimals)) / reserve0;
+            tokenPrice = (reserve0 * (10 ** 18)) / reserve1;
+        }
+
+        emit PriceUpdated(token, tokenPrice, ethPrice, symbol);
+    }
+
+    function getMultipleTokenPrices(
+        address[] calldata tokens
+    )
+        external
+        returns (
+            uint256[] memory tokenPrices,
+            uint256[] memory ethPrices,
+            string[] memory symbols
+        )
+    {
+        uint256 length = tokens.length;
+        tokenPrices = new uint256[](length);
+        ethPrices = new uint256[](length);
+        symbols = new string[](length);
+
+        for (uint256 i = 0; i < length; i++) {
+            (tokenPrices[i], ethPrices[i], symbols[i]) = getTokenPrice(tokens[i]);
+        }
     }
 }
