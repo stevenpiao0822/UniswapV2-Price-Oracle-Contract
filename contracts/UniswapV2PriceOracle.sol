@@ -22,6 +22,10 @@ interface IERC20 {
     function symbol() external view returns (string memory);
 }
 
+/**
+ * @title UniswapV2PriceOracle
+ * @notice This contract provides a way to get the price of a token in ETH using the Uniswap V2 protocol.
+ */
 contract UniswapV2PriceOracle {
     address public immutable WETH;
     address public immutable UNISWAP_V2_FACTORY_ADDRESS;
