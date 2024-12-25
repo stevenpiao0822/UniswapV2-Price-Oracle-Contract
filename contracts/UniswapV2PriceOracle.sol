@@ -50,6 +50,10 @@ contract UniswapV2PriceOracle {
             );
     }
 
+    /**
+     * @notice Get the price of a token in ETH
+     * @param token The address of the token
+     */
     function getTokenPrice(
         address token
     )
@@ -68,6 +72,7 @@ contract UniswapV2PriceOracle {
         uint8 tokenDecimals = IERC20(token).decimals();
         symbol = IERC20(token).symbol();
 
+        // Calculate the token price in ETH
         if (token0 == WETH) {
             ethPrice = (reserve0 * (10 ** tokenDecimals)) / reserve1;
             tokenPrice = (reserve1 * (10 ** 18)) / reserve0;
