@@ -42,6 +42,7 @@ contract UniswapV2PriceOracle {
         address tokenA,
         address tokenB
     ) public view returns (address) {
+        // return IUniswapV2Factory(UNISWAP_V2_FACTORY_ADDRESS).getPair(tokenA, tokenB);
         return
             IUniswapV2Factory(UNISWAP_V2_FACTORY_ADDRESS).getPair(
                 tokenA,
@@ -78,6 +79,10 @@ contract UniswapV2PriceOracle {
         emit PriceUpdated(token, tokenPrice, ethPrice, symbol);
     }
 
+    /**
+     * @dev Get the price of multiple tokens in ETH
+     * @param tokens Array of token addresses
+     */
     function getMultipleTokenPrices(
         address[] calldata tokens
     )
