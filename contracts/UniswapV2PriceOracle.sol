@@ -38,6 +38,11 @@ contract UniswapV2PriceOracle {
         UNISWAP_V2_FACTORY_ADDRESS = _UNISWAP_V2_FACTORY_ADDRESS; //0xF62c03E08ada871A0bEb309762E260a7a6a880E6(sepolia)
     }
 
+    /**
+     * @notice Get the pair address of two tokens
+     * @param tokenA The address of the first token
+     * @param tokenB The address of the second token
+     */
     function getPairAddress(
         address tokenA,
         address tokenB
