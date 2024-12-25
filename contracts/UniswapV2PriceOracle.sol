@@ -47,7 +47,6 @@ contract UniswapV2PriceOracle {
         address tokenA,
         address tokenB
     ) public view returns (address) {
-        // return IUniswapV2Factory(UNISWAP_V2_FACTORY_ADDRESS).getPair(tokenA, tokenB);
         return
             IUniswapV2Factory(UNISWAP_V2_FACTORY_ADDRESS).getPair(
                 tokenA,
