@@ -28,6 +28,8 @@ describe("UniswapV2PriceOracle", function () {
     factory = await ethers.getContractAt("IUniswapV2Factory", UNISWAP_FACTORY);
   });
 
+  // Test cases for UniswapV2PriceOracle contract
+  // Test case for initialization
   describe("Constructor", function () {
     it("Should set WETH address correctly", async function () {
       expect(await priceOracle.WETH()).to.equal(WETH_ADDRESS);
@@ -38,6 +40,7 @@ describe("UniswapV2PriceOracle", function () {
     });
   });
 
+// Test case for getPairAddress
   describe("getPairAddress", function () {
     it("Should return correct pair address for WETH-DAI", async function () {
       const pairAddress = await priceOracle.getPairAddress(WETH_ADDRESS, DAI_ADDRESS);
