@@ -116,6 +116,7 @@ contract UniswapV2PriceOracle {
         ethPrices = new uint256[](length);
         symbols = new string[](length);
 
+        // Loop through the tokens and get their prices
         for (uint256 i = 0; i < length; i++) {
             (tokenPrices[i], ethPrices[i], symbols[i]) = getTokenPrice(
                 tokens[i]
