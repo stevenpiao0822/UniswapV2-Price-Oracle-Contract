@@ -37,6 +37,11 @@ contract UniswapV2PriceOracle {
         string tokenSymbol
     );
 
+    /**
+    * @notice Constructor
+    * @param _WETH The address of the WETH token
+    * @param _UNISWAP_V2_FACTORY_ADDRESS The address of the Uniswap V2 factory
+    */
     constructor(address _WETH, address _UNISWAP_V2_FACTORY_ADDRESS) {
         WETH = _WETH; //0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9(sepolia)
         UNISWAP_V2_FACTORY_ADDRESS = _UNISWAP_V2_FACTORY_ADDRESS; //0xF62c03E08ada871A0bEb309762E260a7a6a880E6(sepolia)
